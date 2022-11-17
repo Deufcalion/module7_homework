@@ -22,34 +22,38 @@
 - использование синтаксиса es6 (кроме функции-конструкторов) и так далее. */
 
 const Gadjet = function (name, battaryCappacity) {
-    this.name = name;
-    this.battaryCappacity = battaryCappacity;
-    this.connect = false;
-  };
-  
-  Gadjet.prototype.connected = function () {
-      console.log(`${this.name} подключен к электросети`);
-      this.connect = true;
-  };
-  Gadjet.prototype.unconnected = function () {
-      console.log(`${this.name} не подключен к электросети`);
-      this.connect = false;
-  };
-  
-  function MyGadjet(name, brand, battaryCappacity, material) {
-    this.name = name;
-    this.brand = brand;
-    this.battaryCappacity = battaryCappacity;
-    this.material = material;
+  this.name = name;
+  this.battaryCappacity = battaryCappacity;
+  this.connect = false;
+};
+
+Gadjet.prototype.connected = function () {
+    console.log(`${this.name} подключен к электросети`);
     this.connect = true;
-  }
-  
-  MyGadjet.prototype = new Gadjet();
-  const phone = new MyGadjet("Телефон", "Samsung", 5000, "metall/plastic");
-  phone.unconnected();
-  console.log(phone)
-  
-  const laptop = new MyGadjet("Ноутбук", "Lenovo", 10000, "plastic");
-  laptop.connected();
-  console.log(laptop)
+};
+Gadjet.prototype.unconnected = function () {
+    console.log(`${this.name} не подключен к электросети`);
+    this.connect = false;
+};
+
+function MyGadjet(name, brand, battaryCappacity, material, power) {
+  this.name = name;
+  this.brand = brand;
+  this.battaryCappacity = battaryCappacity;
+  this.material = material;
+  this.connect = true;
+  this.power = power;
+}
+
+MyGadjet.prototype = new Gadjet();
+const phone = new MyGadjet("Телефон", "Samsung", 5000, "metall/plastic", 5);
+phone.unconnected();
+console.log(phone)
+
+const laptop = new MyGadjet("Ноутбук", "Lenovo", 10000, "plastic", 60);
+laptop.connected();
+console.log(laptop)
+
+const powerConsumption = phone.power + laptop.power
+console.log(`Потребляемая мощность включенных в сеть приборов - ${powerConsumption} Ватт`)
   
