@@ -36,6 +36,6 @@ class Gadjet {
   phone.unconnected()
   console.log(phone)
   
-  const laptop = new MyGadjet ("Ноутбук", "lenovo", 5000, "plastic");
+  const laptop = new MyGadjet ("Ноутбук", "lenovo", 10000, "plastic");
   laptop.connected()
   console.log(laptop)
